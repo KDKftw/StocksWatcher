@@ -1,15 +1,6 @@
 import requests
+import PySimpleGUI as sg
 from bs4 import BeautifulSoup
-
-
-# class="EquityHeaderCellStrong"
-
-
-# page = requests.get("https://www.patria.cz/akcie/0ed24e40-9595-4758-ba4c-78f1ce8ca79e/moneta-money-bank/diskuze.html")
-# status = page.status_code
-# content = page.content
-# print(status)
-# print(content)
 
 
 def moneta():
@@ -17,67 +8,83 @@ def moneta():
     content = requests.get(url).text
     soup = BeautifulSoup(content, "html.parser")
     monprice = soup.find("td", class_="EquityHeaderCellStrong").text
-    print(monprice)
+    return monprice
 
 
-def philipM():
+def pm():
     url = ("https://www.patria.cz/akcie/TABKbl.PR/philip-morris-cr/online.html")
     content = requests.get(url).text
     soup = BeautifulSoup(content, "html.parser")
-    philipMprice = soup.find("td", class_="EquityHeaderCellStrong").text
-    print(philipMprice)
+    pmprice = soup.find("td", class_="EquityHeaderCellStrong").text
+    return pmprice
 
-def KB():
+
+def kb():
     url = ("https://www.patria.cz/akcie/BKOMbl.PR/komercni-banka/online.html")
     content = requests.get(url).text
     soup = BeautifulSoup(content, "html.parser")
-    KBprice = soup.find("td", class_="EquityHeaderCellStrong").text
-    print(KBprice)
+    kbprice = soup.find("td", class_="EquityHeaderCellStrong").text
+    return kbprice
+
 
 def o2():
     url = ("https://www.patria.cz/akcie/SPTTbl.PR/o2-cr/online.html")
     content = requests.get(url).text
     soup = BeautifulSoup(content, "html.parser")
     o2price = soup.find("td", class_="EquityHeaderCellStrong").text
-    print(o2price)
+    return o2price
+
 
 def avast():
     url = ("https://www.patria.cz/akcie/6c4aaf22-3613-4221-b81b-ae4957004c0d/avast-rg/online.html")
     content = requests.get(url).text
     soup = BeautifulSoup(content, "html.parser")
-    avastPrice = soup.find("td", class_="EquityHeaderCellStrong").text
-    print(avastPrice)
+    avastprice = soup.find("td", class_="EquityHeaderCellStrong").text
+    return avastprice
+
 
 def erste():
     url = ("https://www.patria.cz/akcie/ERSTbl.PR/erste-bank/online.html")
     content = requests.get(url).text
     soup = BeautifulSoup(content, "html.parser")
-    erstePrice = soup.find("td", class_="EquityHeaderCellStrong").text
-    print(erstePrice)
+    ersteprice = soup.find("td", class_="EquityHeaderCellStrong").text
+    return ersteprice
+
 
 def cez():
     url = ("https://www.patria.cz/akcie/CEZPbl.PR/cez/online.html")
     content = requests.get(url).text
     soup = BeautifulSoup(content, "html.parser")
-    cezPrice = soup.find("td", class_="EquityHeaderCellStrong").text
-    print(cezPrice)
+    cezprice = soup.find("td", class_="EquityHeaderCellStrong").text
+    return cezprice
+
 
 def vig():
     url = ("https://www.patria.cz/akcie/VIGRbl.PR/vig/online.html")
     content = requests.get(url).text
     soup = BeautifulSoup(content, "html.parser")
-    vigPrice = soup.find("td", class_="EquityHeaderCellStrong").text
-    print(vigPrice)
+    vigprice = soup.find("td", class_="EquityHeaderCellStrong").text
+    return vigprice
 
-vig()
-cez()
-erste()
-avast()
-o2()
-KB()
-philipM()
-moneta()
 
-import PySimpleGUI as sg
+monCena = moneta()
+pmCena = pm()
+kbCena = kb()
+o2Cena = o2()
+avastCena = avast()
+ersteCena = erste()
+cezCena = cez()
+vigCena = vig()
 
-sg.Window(title="StocksWatcher", layout=[[]], margins=(400, 50)).read()
+layout = [[sg.Text("Banky:"), sg.Text("Moneta = " + monCena), sg.Button("Refresh"), sg.Text("KB = " + kbCena), sg.Text("Erste = " + ersteCena)],
+          [sg.Text("test")]]
+
+window = sg.Window("dadsa", layout)
+
+while True:
+    event, values = window.Read()
+    if event in (None, 'Exit'):
+        break
+    if event == 'Refresh':
+        moneta()
+window.Close()
