@@ -76,7 +76,7 @@ ersteCena = erste()
 cezCena = cez()
 vigCena = vig()
 
-layout = [[sg.Text("Banky:"), sg.Text("Moneta = " + monCena), sg.Button("Refresh"), sg.Text("KB = " + kbCena), sg.Text("Erste = " + ersteCena)],
+layout = [[sg.Text("Banky:"), sg.Text("Moneta = " + monCena, key="mon"), sg.Button("Refresh"), sg.Text("KB = " + kbCena), sg.Text("Erste = " + ersteCena)],
           [sg.Text("test")]]
 
 window = sg.Window("dadsa", layout)
@@ -86,5 +86,5 @@ while True:
     if event in (None, 'Exit'):
         break
     if event == 'Refresh':
-        moneta()
-window.Close()
+        window["mon"].update(moneta())
+
