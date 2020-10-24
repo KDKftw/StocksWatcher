@@ -81,7 +81,8 @@ vigCena = vig()
 
 layout =[[sg.Text("Banky:"), sg.Text("MMB = " + monCena, key="mon"), sg.Button("RFmb"), sg.Text("KB = " + kbCena, key="kb"), sg.Button("RFkb"), sg.Text("Erste = " + ersteCena, key="erste"), sg.Button("RFes")],
         [sg.Text("2:"), sg.Text("PM = " + pmCena, key="PM"), sg.Text("O2 = " + o2Cena, key="O2"), sg.Text("CEZ = " + cezCena, key="cez")],
-        [sg.Text("3:"), sg.Text("Avast = " + avastCena, key="avast"), sg.Text("VIG = " + vigCena, key="vig"), sg.Text("Pilule = " )]] ##pilulka to do
+        [sg.Text("3:"), sg.Text("Avast = " + avastCena, key="avast"), sg.Text("VIG = " + vigCena, key="vig"), sg.Text("Pilule = " )],      ##pilulka to do
+        [sg.Button("REFRESH ALL")]]
 
 
 window = sg.Window("Stocks Watcher", layout)
@@ -94,6 +95,12 @@ while True:
         window["mon"].update("MMB = " + moneta())
     if event == 'RFkb':
         window["kb"].update("KB = " + kb())
-    if event == 'RFes':
+    if event == 'REFRESH ALL':
         window["erste"].update("Erste = " + erste())
-
+        window["mon"].update("MMB = " + moneta())
+        window["kb"].update("KB = " + kb())
+        window["PM"].update("PM = " + pm())
+        window["O2"].update("O2 = " + o2())
+        window["cez"].update("CEZ = " + cez())
+        window["avast"].update("Avast = " + avast())
+        window["vig"].update("VIG = " + vig())
