@@ -73,14 +73,16 @@ monCena = moneta()
 
 pmCena = pm()
 o2Cena = o2()
-avastCena = avast()
-
 cezCena = cez()
+
+avastCena = avast()
 vigCena = vig()
 ##pilulka add
 
-layout = [[sg.Text("Banky:"), sg.Text("MMB = " + monCena, key="mon"), sg.Button("RFmb"), sg.Text("KB = " + kbCena, key="kb"), sg.Button("RFkb"), sg.Text("Erste = " + ersteCena, key="erste"), sg.Button("RFes")],
-          [sg.Text("2:"), sg.Text("PM = " + pmCena, key="PM")]]
+layout =[[sg.Text("Banky:"), sg.Text("MMB = " + monCena, key="mon"), sg.Button("RFmb"), sg.Text("KB = " + kbCena, key="kb"), sg.Button("RFkb"), sg.Text("Erste = " + ersteCena, key="erste"), sg.Button("RFes")],
+        [sg.Text("2:"), sg.Text("PM = " + pmCena, key="PM"), sg.Text("O2 = " + o2Cena, key="O2"), sg.Text("CEZ = " + cezCena, key="cez")],
+        [sg.Text("3:"), sg.Text("Avast = " + avastCena, key="avast"), sg.Text("VIG = " + vigCena, key="vig"), sg.Text("Pilule = " )]] ##pilulka to do
+
 
 window = sg.Window("Stocks Watcher", layout)
 
