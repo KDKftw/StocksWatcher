@@ -67,24 +67,31 @@ def vig():
     return vigprice
 
 
-monCena = moneta()
-pmCena = pm()
+ersteCena = erste()
 kbCena = kb()
+monCena = moneta()
+
+pmCena = pm()
 o2Cena = o2()
 avastCena = avast()
-ersteCena = erste()
+
 cezCena = cez()
 vigCena = vig()
+##pilulka add
 
-layout = [[sg.Text("Banky:"), sg.Text("Moneta = " + monCena, key="mon"), sg.Button("Refresh"), sg.Text("KB = " + kbCena), sg.Text("Erste = " + ersteCena)],
-          [sg.Text("test")]]
+layout = [[sg.Text("Banky:"), sg.Text("MMB = " + monCena, key="mon"), sg.Button("RFmb"), sg.Text("KB = " + kbCena, key="kb"), sg.Button("RFkb"), sg.Text("Erste = " + ersteCena, key="erste"), sg.Button("RFes")],
+          [sg.Text("2:"), sg.Text("PM = " + pmCena, key="PM")]]
 
-window = sg.Window("dadsa", layout)
+window = sg.Window("Stocks Watcher", layout)
 
 while True:
     event, values = window.Read()
     if event in (None, 'Exit'):
         break
-    if event == 'Refresh':
-        window["mon"].update(moneta())
+    if event == 'RFmb':
+        window["mon"].update("MMB = " + moneta())
+    if event == 'RFkb':
+        window["kb"].update("KB = " + kb())
+    if event == 'RFes':
+        window["erste"].update("Erste = " + erste())
 
