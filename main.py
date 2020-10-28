@@ -66,6 +66,13 @@ def vig():
     vigprice = soup.find("td", class_="EquityHeaderCellStrong").text
     return vigprice
 
+def pilule():
+    url = ("https://www.patria.cz/akcie/e5420968-1c02-44ef-baaa-9ee6809b666e/pilulka-lekarny/online.html")
+    content = requests.get(url).text
+    soup = BeautifulSoup(content, "html.parser")
+    piluleprice = soup.find("td", class_="EquityHeaderCellStrong").text
+    return piluleprice
+
 
 ersteCena = erste()
 kbCena = kb()
@@ -77,11 +84,11 @@ cezCena = cez()
 
 avastCena = avast()
 vigCena = vig()
-##pilulka add
+piluleCena = pilule()
 
 layout =[[sg.Text("Banky:"), sg.Text("MMB = " + monCena, key="mon"), sg.Button("RFmb"), sg.Text("KB = " + kbCena, key="kb"), sg.Button("RFkb"), sg.Text("Erste = " + ersteCena, key="erste"), sg.Button("RFes")],
         [sg.Text("2:"), sg.Text("PM = " + pmCena, key="PM"), sg.Text("O2 = " + o2Cena, key="O2"), sg.Text("CEZ = " + cezCena, key="cez")],
-        [sg.Text("3:"), sg.Text("Avast = " + avastCena, key="avast"), sg.Text("VIG = " + vigCena, key="vig"), sg.Text("Pilule = " )],      ##pilulka to do
+        [sg.Text("3:"), sg.Text("Avast = " + avastCena, key="avast"), sg.Text("VIG = " + vigCena, key="vig"), sg.Text("Pilule = " + piluleCena, key="pilule" )],
         [sg.Button("REFRESH ALL")]]
 
 
@@ -104,3 +111,4 @@ while True:
         window["cez"].update("CEZ = " + cez())
         window["avast"].update("Avast = " + avast())
         window["vig"].update("VIG = " + vig())
+        window["pilule"].update("Pilule = " + pilule())
