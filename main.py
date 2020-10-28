@@ -1,4 +1,5 @@
 import requests
+import time
 import PySimpleGUI as sg
 from bs4 import BeautifulSoup
 
@@ -74,6 +75,17 @@ def pilule():
     return piluleprice
 
 
+def refreshAll():
+    window["erste"].update("Erste = " + erste())
+    window["mon"].update("MMB = " + moneta())
+    window["kb"].update("KB = " + kb())
+    window["PM"].update("PM = " + pm())
+    window["O2"].update("O2 = " + o2())
+    window["cez"].update("CEZ = " + cez())
+    window["avast"].update("Avast = " + avast())
+    window["vig"].update("VIG = " + vig())
+    window["pilule"].update("Pilule = " + pilule())
+
 ersteCena = erste()
 kbCena = kb()
 monCena = moneta()
@@ -112,3 +124,12 @@ while True:
         window["avast"].update("Avast = " + avast())
         window["vig"].update("VIG = " + vig())
         window["pilule"].update("Pilule = " + pilule())
+
+    def timeRefresh():
+        while True:
+            x = 0
+            if x < 10:
+                time.sleep(1)
+                x+1
+            else:
+                refreshAll()
