@@ -76,7 +76,7 @@ def pilule():
 
 
 def refreshAll():
-    window["erste"].update("Erste = " + erste())
+    window["erste"].update("Erste123 = " + erste())
     window["mon"].update("MMB = " + moneta())
     window["kb"].update("KB = " + kb())
     window["PM"].update("PM = " + pm())
@@ -85,6 +85,19 @@ def refreshAll():
     window["avast"].update("Avast = " + avast())
     window["vig"].update("VIG = " + vig())
     window["pilule"].update("Pilule = " + pilule())
+
+def timeRefresh():
+    while True:
+        x = 0
+        if x < 10:
+            time.sleep(1)
+            x+1
+        else:
+            refreshAll()
+
+
+
+
 
 ersteCena = erste()
 kbCena = kb()
@@ -106,7 +119,13 @@ layout =[[sg.Text("Banky:"), sg.Text("MMB = " + monCena, key="mon"), sg.Button("
 
 window = sg.Window("Stocks Watcher", layout)
 
+
+
+
+
 while True:
+    while True:
+        timeRefresh()
     event, values = window.Read()
     if event in (None, 'Exit'):
         break
@@ -115,21 +134,9 @@ while True:
     if event == 'RFkb':
         window["kb"].update("KB = " + kb())
     if event == 'REFRESH ALL':
-        window["erste"].update("Erste = " + erste())
-        window["mon"].update("MMB = " + moneta())
-        window["kb"].update("KB = " + kb())
-        window["PM"].update("PM = " + pm())
-        window["O2"].update("O2 = " + o2())
-        window["cez"].update("CEZ = " + cez())
-        window["avast"].update("Avast = " + avast())
-        window["vig"].update("VIG = " + vig())
-        window["pilule"].update("Pilule = " + pilule())
+        refreshAll()
 
-    def timeRefresh():
-        while True:
-            x = 0
-            if x < 10:
-                time.sleep(1)
-                x+1
-            else:
-                refreshAll()
+
+
+
+
