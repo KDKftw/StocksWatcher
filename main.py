@@ -114,18 +114,13 @@ piluleCena = pilule()
 layout =[[sg.Text("Banky:"), sg.Text("MMB = " + monCena, key="mon"), sg.Button("RFmb"), sg.Text("KB = " + kbCena, key="kb"), sg.Button("RFkb"), sg.Text("Erste = " + ersteCena, key="erste"), sg.Button("RFes")],
         [sg.Text("2:"), sg.Text("PM = " + pmCena, key="PM"), sg.Text("O2 = " + o2Cena, key="O2"), sg.Text("CEZ = " + cezCena, key="cez")],
         [sg.Text("3:"), sg.Text("Avast = " + avastCena, key="avast"), sg.Text("VIG = " + vigCena, key="vig"), sg.Text("Pilule = " + piluleCena, key="pilule" )],
-        [sg.Button("REFRESH ALL")]]
+        [sg.Button("REFRESH ALL")],
+         [sg.Text("ahoj"), sg.Image(r"C:\Users\KDK\Desktop\StocksWatcher\Photos\greenUP.png")]]
 
 
 window = sg.Window("Stocks Watcher", layout)
 
-
-
-
-
 while True:
-    while True:
-        timeRefresh()
     event, values = window.Read()
     if event in (None, 'Exit'):
         break
@@ -136,7 +131,8 @@ while True:
     if event == 'REFRESH ALL':
         refreshAll()
 
-
+while True:
+    timeRefresh()
 
 
 
