@@ -76,7 +76,7 @@ def pilule():
 
 
 def refreshAll():
-    window["erste"].update("Erste123 = " + erste())
+    window["erste"].update("Erste = " + erste())
     window["mon"].update("MMB = " + moneta())
     window["kb"].update("KB = " + kb())
     window["PM"].update("PM = " + pm())
@@ -130,6 +130,7 @@ while True:
         window["kb"].update("KB = " + kb())
     if event == 'REFRESH ALL':
         refreshAll()
+    ##if event == "Zapsat":
 
 while True:
     timeRefresh()
